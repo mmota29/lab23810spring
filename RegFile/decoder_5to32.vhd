@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity decoder_5to32 is
+  port(
+    i_EN : in std_logic;
+    i_A  : in std_logic_vector(4 downto 0);
+    o_Y  : out std_logic_vector(31 downto 0)
+  );
+end decoder_5to32;
+
+architecture behave of decoder_5to32 is
+begin
+  process(i_EN, i_A)
+    variable tmp : std_logic_vector(31 downto 0);
+    variable idx : integer;
+  begin
+    tmp := (others => '0');
+    if (i_EN = '1') then
+      idx := to_integer(unsigned(i_A));
+      tmp(idx) := '1';
+    end if;
+    o_Y <= tmp;
+  end process;
+
+end behave;
