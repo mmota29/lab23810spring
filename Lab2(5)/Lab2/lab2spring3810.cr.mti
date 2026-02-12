@@ -1,0 +1,79 @@
+/home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_reg_N
+-- Compiling architecture sim of tb_reg_N
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity mem
+-- Compiling architecture rtl of mem
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity dffg
+-- Compiling architecture mixed of dffg
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_dffg
+-- Compiling architecture behavior of tb_dffg
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity decoder_5to32
+-- Compiling architecture behave of decoder_5to32
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_regfile_rv32
+-- Compiling architecture sim of tb_regfile_rv32
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_mux32to1_32bit.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_mux32to1_32bit.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_mux32to1_32bit
+-- Compiling architecture sim of tb_mux32to1_32bit
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_decoder_5to32
+-- Compiling architecture sim of tb_decoder_5to32
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity reg_N
+-- Compiling architecture structural of reg_N
+
+} {} {}}
