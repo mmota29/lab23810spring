@@ -47,21 +47,20 @@ begin
     rst <= '0';
     wait for 8 ns;
 
-    -- write some value to reg when we=1
-    -- change this to change which value we write
-    we <= '1';
-    d <= x"DEADBEEF";
-    wait for 10 ns; -- sample on rising edge
+-- write some value to reg when we=1
+we <= '1';
+d <= x"4D494348"; -- "MICH"
+wait for 10 ns;
 
-    -- hold behavior when we=0
-    we <= '0';
-    d <= x"01234567"; -- should not update
-    wait for 20 ns;
+-- hold behavior when we=0
+we <= '0';
+d <= x"00012903"; -- looks like 012903 (should NOT update)
+wait for 20 ns;
 
-    -- test write again
-    we <= '1';
-    d <= x"AAAAAAAA";
-    wait for 10 ns;
+-- test write again
+we <= '1';
+d <= x"41454C00"; -- "AEL\0" (finishes MICHAEL)
+wait for 10 ns;
 
     wait for 50 ns;
     wait;

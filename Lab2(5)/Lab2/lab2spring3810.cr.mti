@@ -1,13 +1,4 @@
-/home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd
-QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity tb_reg_N
--- Compiling architecture sim of tb_reg_N
-
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
+/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -24,6 +15,15 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling entity dffg
 -- Compiling architecture mixed of dffg
 
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_reg_N
+-- Compiling architecture sim of tb_reg_N
+
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
@@ -32,32 +32,47 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling entity tb_dffg
 -- Compiling architecture behavior of tb_dffg
 
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd {0 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity mux32to1_32bit
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd(7): near "port": syntax error
+** Note: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd(9): VHDL Compiler exiting
+
+} {8.0 9.0} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd {0 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity regfile_rv32
+-- Compiling architecture structural of regfile_rv32
+-- Loading entity decoder_5to32
+-- Loading entity reg_N
+-- Loading entity mux32to1_32bit
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(53): (vcom-1484) Unknown formal identifier "i_D".
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(54): (vcom-1484) Unknown formal identifier "i_S".
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(55): (vcom-1484) Unknown formal identifier "o_Y".
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(60): (vcom-1484) Unknown formal identifier "i_D".
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(61): (vcom-1484) Unknown formal identifier "i_S".
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(62): (vcom-1484) Unknown formal identifier "o_Y".
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(56): (vcom-1035) Formal port "SEL" has OPEN or no actual associated with it.
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(56): (vcom-1035) Formal port "D" has OPEN or no actual associated with it.
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(63): (vcom-1035) Formal port "SEL" has OPEN or no actual associated with it.
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(63): (vcom-1035) Formal port "D" has OPEN or no actual associated with it.
+** Note: /home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd(65): VHDL Compiler exiting
+
+} {12.0 22.0} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
 -- Compiling entity decoder_5to32
--- Compiling architecture behave of decoder_5to32
-
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd
-QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity tb_regfile_rv32
--- Compiling architecture sim of tb_regfile_rv32
-
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_mux32to1_32bit.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_mux32to1_32bit.vhd
-QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity tb_mux32to1_32bit
--- Compiling architecture sim of tb_mux32to1_32bit
+-- Compiling architecture rtl of decoder_5to32
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
@@ -67,6 +82,15 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package NUMERIC_STD
 -- Compiling entity tb_decoder_5to32
 -- Compiling architecture sim of tb_decoder_5to32
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_regfile_rv32
+-- Compiling architecture sim of tb_regfile_rv32
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025

@@ -52,7 +52,7 @@ begin
     wait for 10 ns;
 
     -- random-ish one
-    a <= "01001"; -- change this 
+    a <= "01001"; -- change this to change which bit is hot (here expect y(9)=1)
     wait for 10 ns;
 
     -- toggle enable while holding address
