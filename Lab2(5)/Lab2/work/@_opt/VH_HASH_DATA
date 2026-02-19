@@ -1,13 +1,15 @@
 [N
-4
-2
-5 reg_n
-4
-1 N
+5
+5
+10 ADDR_WIDTH
 1
 59 /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/work
 3
-10 structural
+3 rtl
+4
+10 DATA_WIDTH
+2
+3 mem
 ]
 [G
 1
@@ -18,6 +20,20 @@
 1
 0
 32
+0
+0 0
+0
+0
+]
+[G
+1
+2
+3
+1
+5
+1
+0
+10
 0
 0 0
 0

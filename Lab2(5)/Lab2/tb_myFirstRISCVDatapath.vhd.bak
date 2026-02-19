@@ -1,0 +1,163 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity tb_myFirstRISCVDatapath is
+end tb_myFirstRISCVDatapath;
+
+architecture sim of tb_myFirstRISCVDatapath is
+  component myFirstRISCVDatapath
+    port(
+      i_CLK : in std_logic;
+      i_RST : in std_logic;
+
+      i_regWrite : in std_logic;
+      i_ALUSrc   : in std_logic;
+      i_nAddSub  : in std_logic;
+
+      i_rs1  : in std_logic_vector(4 downto 0);
+      i_rs2  : in std_logic_vector(4 downto 0);
+      i_rd   : in std_logic_vector(4 downto 0);
+      i_imm  : in std_logic_vector(31 downto 0);
+
+      o_rs1_data : out std_logic_vector(31 downto 0);
+      o_rs2_data : out std_logic_vector(31 downto 0);
+      o_alu_out  : out std_logic_vector(31 downto 0)
+    );
+  end component;
+
+  signal clk : std_logic := '0';
+  signal rst : std_logic := '0';
+
+  signal regWrite : std_logic := '0';
+  signal ALUSrc   : std_logic := '0';
+  signal nAddSub  : std_logic := '0';
+
+  signal rs1  : std_logic_vector(4 downto 0) := (others => '0');
+  signal rs2  : std_logic_vector(4 downto 0) := (others => '0');
+  signal rd   : std_logic_vector(4 downto 0) := (others => '0');
+  signal imm  : std_logic_vector(31 downto 0) := (others => '0');
+
+  signal rs1_data : std_logic_vector(31 downto 0);
+  signal rs2_data : std_logic_vector(31 downto 0);
+  signal alu_out  : std_logic_vector(31 downto 0);
+
+  procedure step_inst(
+    rs1v : std_logic_vector(4 downto 0);
+    rs2v : std_logic_vector(4 downto 0);
+    rdv  : std_logic_vector(4 downto 0);
+    immv : std_logic_vector(31 downto 0);
+    wev  : std_logic;
+    alus : std_logic;
+    sub  : std_logic
+  ) is
+  begin
+    -- change this if you want to drive on a different edge
+    wait until clk = '0';
+
+    rs1 <= rs1v;
+    rs2 <= rs2v;
+    rd  <= rdv;
+    imm <= immv;
+
+    regWrite <= wev;
+    ALUSrc   <= alus;
+    nAddSub  <= sub;
+
+    wait until clk = '1'; -- instruction "happens" here
+    wait for 1 ns; -- tiny spacer so waveform isn't a blur
+  end procedure;
+
+begin
+  uut: myFirstRISCVDatapath
+    port map(
+      i_CLK => clk,
+      i_RST => rst,
+      i_regWrite => regWrite,
+      i_ALUSrc => ALUSrc,
+      i_nAddSub => nAddSub,
+      i_rs1 => rs1,
+      i_rs2 => rs2,
+      i_rd => rd,
+      i_imm => imm,
+      o_rs1_data => rs1_data,
+      o_rs2_data => rs2_data,
+      o_alu_out => alu_out
+    );
+
+  clk_proc: process
+  begin
+    while true loop
+      clk <= '0'; wait for 5 ns;
+      clk <= '1'; wait for 5 ns;
+    end loop;
+  end process;
+
+  stim: process
+  begin
+    -- reset (flip polarity if your dffg is active-low)
+    rst <= '1';
+    regWrite <= '0';
+    ALUSrc <= '0';
+    nAddSub <= '0';
+    rs1 <= "00000";
+    rs2 <= "00000";
+    rd  <= "00000";
+    imm <= (others => '0');
+    wait for 12 ns;
+    rst <= '0';
+    wait for 8 ns;
+
+    -- addi x1, zero, 1
+    -- change rd/imm here if you want to demo something else
+    step_inst("00000","00001","00001",x"00000001",'1','1','0');
+
+    -- addi x2..x10, zero, 2..10
+    step_inst("00000","00001","00010",x"00000002",'1','1','0');
+    step_inst("00000","00001","00011",x"00000003",'1','1','0');
+    step_inst("00000","00001","00100",x"00000004",'1','1','0');
+    step_inst("00000","00001","00101",x"00000005",'1','1','0');
+    step_inst("00000","00001","00110",x"00000006",'1','1','0');
+    step_inst("00000","00001","00111",x"00000007",'1','1','0');
+    step_inst("00000","00001","01000",x"00000008",'1','1','0');
+    step_inst("00000","00001","01001",x"00000009",'1','1','0');
+    step_inst("00000","00001","01010",x"0000000A",'1','1','0');
+
+    -- add x11, x1, x2
+    step_inst("00001","00010","01011",x"00000000",'1','0','0');
+
+    -- sub x12, x11, x3
+    step_inst("01011","00011","01100",x"00000000",'1','0','1');
+
+    -- add x13, x12, x4
+    step_inst("01100","00100","01101",x"00000000",'1','0','0');
+
+    -- sub x14, x13, x5
+    step_inst("01101","00101","01110",x"00000000",'1','0','1');
+
+    -- add x15, x14, x6
+    step_inst("01110","00110","01111",x"00000000",'1','0','0');
+
+    -- sub x16, x15, x7
+    step_inst("01111","00111","10000",x"00000000",'1','0','1');
+
+    -- add x17, x16, x8
+    step_inst("10000","01000","10001",x"00000000",'1','0','0');
+
+    -- sub x18, x17, x9
+    step_inst("10001","01001","10010",x"00000000",'1','0','1');
+
+    -- add x19, x18, x10
+    step_inst("10010","01010","10011",x"00000000",'1','0','0');
+
+    -- addi x20, zero, -35  (two's complement: FFFFFFDD)
+    step_inst("00000","00001","10100",x"FFFFFFDD",'1','1','0');
+
+    -- add x21, x19, x20
+    step_inst("10011","10100","10101",x"00000000",'1','0','0');
+
+    -- stop writing, just peek around in wave if you want
+    regWrite <= '0';
+    wait;
+  end process;
+
+end sim;

@@ -2,138 +2,64 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- 32 x 32-bit RISC-V register file
-entity regfile32 is
-  port (
-    i_CLK    : in  std_logic;                              -- clock
-    i_RST    : in  std_logic;                              -- async, active-high reset
-    i_WE     : in  std_logic;                              -- global write enable
-    i_RD     : in  std_logic_vector(4 downto 0);           -- write address
-    i_RS1    : in  std_logic_vector(4 downto 0);           -- read address 1
-    i_RS2    : in  std_logic_vector(4 downto 0);           -- read address 2
-    i_WDATA  : in  std_logic_vector(31 downto 0);          -- write data
-    o_RDATA1 : out std_logic_vector(31 downto 0);          -- read data 1
-    o_RDATA2 : out std_logic_vector(31 downto 0)           -- read data 2
+entity regfile_rv32 is
+  port(
+    i_CLK : in std_logic;
+    i_RST : in std_logic;
+    i_we  : in std_logic;
+    i_rs1 : in std_logic_vector(4 downto 0);
+    i_rs2 : in std_logic_vector(4 downto 0);
+    i_rd  : in std_logic_vector(4 downto 0);
+    i_wdata : in std_logic_vector(31 downto 0);
+    o_rs1_data : out std_logic_vector(31 downto 0);
+    o_rs2_data : out std_logic_vector(31 downto 0)
   );
-end entity regfile32;
+end regfile_rv32;
 
-architecture structural of regfile32 is
+architecture structural of regfile_rv32 is
+  -- reuse the array type from mux file (redeclared here)
+  type word32_array_t is array(0 to 31) of std_logic_vector(31 downto 0);
 
-  component decoder5to32 is
-    port (
-      en : in  std_logic;
-      a  : in  std_logic_vector(4 downto 0);
-      y  : out std_logic_vector(31 downto 0)
-    );
-  end component;
-
-  component reg_n is
-    generic ( WIDTH : integer := 32 );
-    port (
-      i_CLK : in  std_logic;
-      i_RST : in  std_logic;
-      i_WE  : in  std_logic;
-      i_D   : in  std_logic_vector(WIDTH-1 downto 0);
-      o_Q   : out std_logic_vector(WIDTH-1 downto 0)
-    );
-  end component;
-
-  component mux32x1 is
-    port(
-      sel  : in  std_logic_vector(4 downto 0);
-      d0   : in  std_logic_vector(31 downto 0);
-      d1   : in  std_logic_vector(31 downto 0);
-      d2   : in  std_logic_vector(31 downto 0);
-      d3   : in  std_logic_vector(31 downto 0);
-      d4   : in  std_logic_vector(31 downto 0);
-      d5   : in  std_logic_vector(31 downto 0);
-      d6   : in  std_logic_vector(31 downto 0);
-      d7   : in  std_logic_vector(31 downto 0);
-      d8   : in  std_logic_vector(31 downto 0);
-      d9   : in  std_logic_vector(31 downto 0);
-      d10  : in  std_logic_vector(31 downto 0);
-      d11  : in  std_logic_vector(31 downto 0);
-      d12  : in  std_logic_vector(31 downto 0);
-      d13  : in  std_logic_vector(31 downto 0);
-      d14  : in  std_logic_vector(31 downto 0);
-      d15  : in  std_logic_vector(31 downto 0);
-      d16  : in  std_logic_vector(31 downto 0);
-      d17  : in  std_logic_vector(31 downto 0);
-      d18  : in  std_logic_vector(31 downto 0);
-      d19  : in  std_logic_vector(31 downto 0);
-      d20  : in  std_logic_vector(31 downto 0);
-      d21  : in  std_logic_vector(31 downto 0);
-      d22  : in  std_logic_vector(31 downto 0);
-      d23  : in  std_logic_vector(31 downto 0);
-      d24  : in  std_logic_vector(31 downto 0);
-      d25  : in  std_logic_vector(31 downto 0);
-      d26  : in  std_logic_vector(31 downto 0);
-      d27  : in  std_logic_vector(31 downto 0);
-      d28  : in  std_logic_vector(31 downto 0);
-      d29  : in  std_logic_vector(31 downto 0);
-      d30  : in  std_logic_vector(31 downto 0);
-      d31  : in  std_logic_vector(31 downto 0);
-      y    : out std_logic_vector(31 downto 0)
-    );
-  end component;
-
-  signal we_vec  : std_logic_vector(31 downto 0);
-  type reg_array_t is array (31 downto 0) of std_logic_vector(31 downto 0);
-  signal reg_q   : reg_array_t;
+  signal write_one_hot : std_logic_vector(31 downto 0);
+  signal regs_out : word32_array_t;
 
 begin
-  -- x0 hard-wired to zero
-  reg_q(0) <= (others => '0');
+  -- x0 is hardwired to zero
+  regs_out(0) <= (others => '0');
 
-  -- Write decoder
-  u_dec: decoder5to32
-    port map (
-      en => i_WE,
-      a  => i_RD,
-      y  => we_vec
+  dec: entity work.decoder_5to32
+    port map(
+      i_EN => i_we,
+      i_A  => i_rd,
+      o_Y  => write_one_hot
     );
 
-  -- Registers x1..x31
-  gen_regs: for r in 1 to 31 generate
-    u_reg: reg_n
-      generic map ( WIDTH => 32 )
-      port map (
+  -- instantiate regs 1..31
+  gen_regs: for i in 1 to 31 generate
+    r: entity work.reg_N
+      generic map(N => 32)
+      port map(
         i_CLK => i_CLK,
         i_RST => i_RST,
-        i_WE  => we_vec(r),
-        i_D   => i_WDATA,
-        o_Q   => reg_q(r)
+        i_WE  => write_one_hot(i),
+        i_D   => i_wdata,
+        o_Q   => regs_out(i)
       );
-  end generate;
+  end generate gen_regs;
 
-  -- Read port 1
-  u_mux_rs1: mux32x1
-    port map (
-      sel  => i_RS1,
-      d0   => reg_q(0),  d1   => reg_q(1),  d2   => reg_q(2),  d3   => reg_q(3),
-      d4   => reg_q(4),  d5   => reg_q(5),  d6   => reg_q(6),  d7   => reg_q(7),
-      d8   => reg_q(8),  d9   => reg_q(9),  d10  => reg_q(10), d11  => reg_q(11),
-      d12  => reg_q(12), d13  => reg_q(13), d14  => reg_q(14), d15  => reg_q(15),
-      d16  => reg_q(16), d17  => reg_q(17), d18  => reg_q(18), d19  => reg_q(19),
-      d20  => reg_q(20), d21  => reg_q(21), d22  => reg_q(22), d23  => reg_q(23),
-      d24  => reg_q(24), d25  => reg_q(25), d26  => reg_q(26), d27  => reg_q(27),
-      d28  => reg_q(28), d29  => reg_q(29), d30  => reg_q(30), d31  => reg_q(31),
-      y    => o_RDATA1
+  -- muxes for read ports
+  m1: entity work.mux32to1_32bit
+    port map(
+      i_D => regs_out,
+      i_S => i_rs1,
+      o_Y => o_rs1_data
     );
 
-  -- Read port 2
-  u_mux_rs2: mux32x1
-    port map (
-      sel  => i_RS2,
-      d0   => reg_q(0),  d1   => reg_q(1),  d2   => reg_q(2),  d3   => reg_q(3),
-      d4   => reg_q(4),  d5   => reg_q(5),  d6   => reg_q(6),  d7   => reg_q(7),
-      d8   => reg_q(8),  d9   => reg_q(9),  d10  => reg_q(10), d11  => reg_q(11),
-      d12  => reg_q(12), d13  => reg_q(13), d14  => reg_q(14), d15  => reg_q(15),
-      d16  => reg_q(16), d17  => reg_q(17), d18  => reg_q(18), d19  => reg_q(19),
-      d20  => reg_q(20), d21  => reg_q(21), d22  => reg_q(22), d23  => reg_q(23),
-      d24  => reg_q(24), d25  => reg_q(25), d26  => reg_q(26), d27  => reg_q(27),
-      d28  => reg_q(28), d29  => reg_q(29), d30  => reg_q(30), d31  => reg_q(31),
-      y    => o_RDATA2
+  m2: entity work.mux32to1_32bit
+    port map(
+      i_D => regs_out,
+      i_S => i_rs2,
+      o_Y => o_rs2_data
     );
 
-end architecture structural;
+end structural;

@@ -12,20 +12,15 @@ end decoder_5to32;
 
 architecture rtl of decoder_5to32 is
 begin
-  -- decoder, but only when enabled
   process(i_EN, i_A)
     variable tmp : std_logic_vector(31 downto 0);
     variable idx : integer;
   begin
     tmp := (others => '0');
-
     if i_EN = '1' then
       idx := to_integer(unsigned(i_A));
-      -- idx should be 0..31
       tmp(idx) := '1';
     end if;
-
     o_Y <= tmp;
   end process;
-
 end rtl;

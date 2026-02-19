@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity reg_N is
-  generic (N : integer := 32);
+  generic(N : integer := 32);
   port(
     i_CLK : in std_logic;
     i_RST : in std_logic;
@@ -24,7 +24,6 @@ architecture structural of reg_N is
   end component;
 
   signal s_q : std_logic_vector(N-1 downto 0);
-
 begin
   o_Q <= s_q;
 
@@ -37,6 +36,5 @@ begin
         i_D   => i_D(i),
         o_Q   => s_q(i)
       );
-  end generate gen_bits;
-
+  end generate;
 end structural;
