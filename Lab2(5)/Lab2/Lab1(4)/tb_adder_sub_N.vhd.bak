@@ -1,0 +1,102 @@
+-------------------------------------------------------------------------
+-- tb_adder_sub_N.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: Testbench for adder_sub_N (N-bit adder/subtractor w/ control).
+-- Tests N=32 configuration using several ADD and SUB cases.
+-------------------------------------------------------------------------
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity tb_adder_sub_N is
+end tb_adder_sub_N;
+
+architecture tb of tb_adder_sub_N is
+
+  constant N : integer := 32;
+
+  component adder_sub_N is
+    generic(N : integer := 32);
+    port(
+      iA       : in  std_logic_vector(N-1 downto 0);
+      iB       : in  std_logic_vector(N-1 downto 0);
+      nAdd_Sub : in  std_logic;
+      oS       : out std_logic_vector(N-1 downto 0);
+      oCout    : out std_logic
+    );
+  end component;
+
+  signal s_A   : std_logic_vector(N-1 downto 0) := (others => '0');
+  signal s_B   : std_logic_vector(N-1 downto 0) := (others => '0');
+  signal s_ctl : std_logic := '0';
+  signal s_S   : std_logic_vector(N-1 downto 0);
+  signal s_Cout: std_logic;
+
+begin
+
+  DUT0: adder_sub_N
+    generic map (N => N)
+    port map(
+      iA       => s_A,
+      iB       => s_B,
+      nAdd_Sub => s_ctl,
+      oS       => s_S,
+      oCout    => s_Cout
+    );
+
+  P_TEST: process
+  begin
+    ---------------------------------------------------------------------
+    -- ADD Case 1: 5 + 3 = 8
+    ---------------------------------------------------------------------
+    s_ctl <= '0';                 -- ADD
+    s_A   <= x"00000005";
+    s_B   <= x"00000003";
+    wait for 10 ns;
+    
+
+    ---------------------------------------------------------------------
+    -- ADD Case 2: FFFFFFFF + 1 = 00000000 with carry-out 1
+    ---------------------------------------------------------------------
+    s_ctl <= '0';
+    s_A   <= x"FFFFFFFF";
+    s_B   <= x"00000001";
+    wait for 10 ns;
+    
+
+    ---------------------------------------------------------------------
+    -- SUB Case 1: 9 - 3 = 6 (no borrow => Cout=1)
+    ---------------------------------------------------------------------
+    s_ctl <= '1';                 -- SUB
+    s_A   <= x"00000009";
+    s_B   <= x"00000003";
+    wait for 10 ns;
+   
+
+    ---------------------------------------------------------------------
+    -- SUB Case 2: 3 - 9 = -6 = FFFFFFFA (borrow => Cout=0)
+    ---------------------------------------------------------------------
+    s_ctl <= '1';
+    s_A   <= x"00000003";
+    s_B   <= x"00000009";
+    wait for 10 ns;
+   
+
+    ---------------------------------------------------------------------
+    -- SUB Case 3: 0 - 1 = FFFFFFFF (borrow => Cout=0)
+    ---------------------------------------------------------------------
+    s_ctl <= '1';
+    s_A   <= x"00000000";
+    s_B   <= x"00000003";
+    wait for 10 ns;
+
+
+ s_ctl <= '1';
+    s_A   <= x"FFFFFFFD";
+    s_B   <= x"FFFFFFFE";
+    wait for 10 ns;
+
+
+    wait;
+  end process;
+
+end tb;

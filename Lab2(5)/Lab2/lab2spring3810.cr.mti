@@ -1,4 +1,12 @@
-/home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
+/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mux2t1_32bit.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mux2t1_32bit.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux2t1_32bit
+-- Compiling architecture dataflow of mux2t1_32bit
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -7,6 +15,22 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling entity mux32to1_32bit
 -- Compiling architecture rtl of mux32to1_32bit
 
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1_df.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1_df.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux2t1_df
+-- Compiling architecture dataflow of mux2t1_df
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/full_adder.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/full_adder.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity full_adder
+-- Compiling architecture structural of full_adder
+
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
@@ -14,6 +38,14 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package std_logic_1164
 -- Compiling entity tb_decoder_5to32
 -- Compiling architecture sim of tb_decoder_5to32
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_adder_sub_N.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_adder_sub_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_adder_sub_N
+-- Compiling architecture tb of tb_adder_sub_N
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_reg_N.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
@@ -31,6 +63,20 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package NUMERIC_STD
 -- Compiling entity mem
 -- Compiling architecture rtl of mem
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mySecondRISCVDatapath.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mySecondRISCVDatapath.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mySecondRISCVDatapath
+-- Compiling architecture structural of mySecondRISCVDatapath
+-- Loading entity regfile_rv32
+-- Loading entity ext12to32
+-- Loading entity mux2t1_32bit
+-- Loading package NUMERIC_STD
+-- Loading entity alu32_addsub
+-- Loading entity mem
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_myFirstRISCVDatapath.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_myFirstRISCVDatapath.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
@@ -74,13 +120,39 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling entity tb_mux32to1_32bit
 -- Compiling architecture sim of tb_mux32to1_32bit
 
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_OnesComp_N.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_OnesComp_N.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity ext12to32
--- Compiling architecture rtl of ext12to32
+-- Compiling entity tb_OnesComp_N
+-- Compiling architecture tb of tb_OnesComp_N
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_mux2t1
+-- Compiling architecture tb of tb_mux2t1
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_df.vhd {2 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_df.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity adderN_df
+-- Compiling architecture dataflow of adderN_df
+** Warning: /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_df.vhd(28): (vcom-1074) Non-locally static OTHERS choice is allowed only if it is the only choice of the only association.
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_df.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_df.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_mux2t1_df
+-- Compiling architecture tb of tb_mux2t1_df
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
@@ -89,6 +161,14 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package std_logic_1164
 -- Compiling entity tb_dffg
 -- Compiling architecture behavior of tb_dffg
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ext12to32
+-- Compiling architecture rtl of ext12to32
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/myFirstRISCVDatapath.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/myFirstRISCVDatapath.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
@@ -99,12 +179,23 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling entity myFirstRISCVDatapath
 -- Compiling architecture structural of myFirstRISCVDatapath
 
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex {0 {vlog -work work -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex
-QuestaSim-64 vlog 2025.1_2 Compiler 2025.04 Apr  7 2025
-** Error: (vlog-13069) /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex(16): near "00000002": syntax error, unexpected INTEGER NUMBER.
-** Error: /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex(15): (vlog-13205) Syntax error found in the scope following 'FFFFFFFF'. Is there a missing '::'?
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity mux2t1
+-- Compiling architecture structural of mux2t1
 
-} {3.0 5.0} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/OnesComp_N.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/OnesComp_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity OnesComp_N
+-- Compiling architecture structural of OnesComp_N
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_regfile_rv32.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -113,13 +204,34 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling entity tb_regfile_rv32
 -- Compiling architecture sim of tb_regfile_rv32
 
-} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex {0 {vlog -work work -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex
+QuestaSim-64 vlog 2025.1_2 Compiler 2025.04 Apr  7 2025
+** Error: (vlog-13069) /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex(17): near "00000002": syntax error, unexpected INTEGER NUMBER.
+** Error: /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dmem.hex(16): (vlog-13205) Syntax error found in the scope following 'FFFFFFFF'. Is there a missing '::'?
+
+} {3.0 5.0} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd {1 {vcom -work work -2008 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity dffg
 -- Compiling architecture mixed of dffg
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_rca.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_rca.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity adderN_rca
+-- Compiling architecture structural of adderN_rca
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_N.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_mux2t1_N
+-- Compiling architecture tb of tb_mux2t1_N
 
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dmem.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dmem.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
@@ -131,6 +243,15 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Compiling architecture sim of tb_dmem
 -- Loading entity mem
 
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/alu32_addsub.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/alu32_addsub.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity alu32_addsub
+-- Compiling architecture behavioral of alu32_addsub
+
 } {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_ext12to32.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_ext12to32.vhd
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package STANDARD
@@ -138,5 +259,21 @@ QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
 -- Loading package std_logic_1164
 -- Compiling entity tb_ext12to32
 -- Compiling architecture sim of tb_ext12to32
+
+} {} {}} {/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/ tb_adderN_compare_32.vhd} {1 {vcom -work work -2002 -explicit -vopt -stats=none {/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/ tb_adderN_compare_32.vhd}
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity tb_adderN_compare_32
+-- Compiling architecture tb of tb_adderN_compare_32
+
+} {} {}} /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adder_sub_N.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adder_sub_N.vhd
+QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity adder_sub_N
+-- Compiling architecture structural of adder_sub_N
 
 } {} {}}

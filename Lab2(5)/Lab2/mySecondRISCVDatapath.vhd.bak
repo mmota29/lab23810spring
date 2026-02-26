@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
 
 entity mySecondRISCVDatapath is
 	generic(
@@ -33,50 +32,16 @@ entity mySecondRISCVDatapath is
 end mySecondRISCVDatapath;
 
 architecture structural of mySecondRISCVDatapath is
-	component regfile_rv32
-		port(
-			i_CLK : in std_logic;
-			i_RST : in std_logic;
-
-			i_WE    : in std_logic;
-			i_rs1   : in std_logic_vector(4 downto 0);
-			i_rs2   : in std_logic_vector(4 downto 0);
-			i_rd    : in std_logic_vector(4 downto 0);
-			i_wdata : in std_logic_vector(31 downto 0);
-
-			o_rs1_data : out std_logic_vector(31 downto 0);
-			o_rs2_data : out std_logic_vector(31 downto 0)
-		);
-	end component;
-
-	component ext12to32
-		port(
-			i_A    : in  std_logic_vector(11 downto 0);
-			i_SEXT : in  std_logic;
-			o_Y    : out std_logic_vector(31 downto 0)
-		);
-	end component;
-
-	component mem
-		generic(
-			DATA_WIDTH : natural := 32;
-			ADDR_WIDTH : natural := 10
-		);
-		port(
-			clk  : in std_logic;
-			addr : in std_logic_vector((ADDR_WIDTH-1) downto 0);
-			data : in std_logic_vector((DATA_WIDTH-1) downto 0);
-			we   : in std_logic := '1';
-			q    : out std_logic_vector((DATA_WIDTH-1) downto 0)
-		);
-	end component;
-
 	signal rs1_data : std_logic_vector(31 downto 0);
 	signal rs2_data : std_logic_vector(31 downto 0);
 
 	signal imm32    : std_logic_vector(31 downto 0);
+
 	signal alu_b    : std_logic_vector(31 downto 0);
+	signal b_inv    : std_logic_vector(31 downto 0);
+	signal b_sel    : std_logic_vector(31 downto 0);
 	signal alu_out  : std_logic_vector(31 downto 0);
+	signal alu_cout : std_logic;
 
 	signal mem_addr : std_logic_vector(AW-1 downto 0);
 	signal mem_q    : std_logic_vector(31 downto 0);
@@ -84,68 +49,129 @@ architecture structural of mySecondRISCVDatapath is
 	signal wb_data  : std_logic_vector(31 downto 0);
 
 begin
-	rf: regfile_rv32
+	----------------------------------------------------------------
+	-- Register file
+	----------------------------------------------------------------
+	rf: entity work.regfile_rv32
 		port map(
-			i_CLK => i_CLK,
-			i_RST => i_RST,
-			i_WE => i_RegWrite,
-			i_rs1 => i_rs1,
-			i_rs2 => i_rs2,
-			i_rd  => i_rd,
-			i_wdata => wb_data,
+			i_CLK      => i_CLK,
+			i_RST      => i_RST,
+			i_WE       => i_RegWrite,
+			i_rs1      => i_rs1,
+			i_rs2      => i_rs2,
+			i_rd       => i_rd,
+			i_wdata    => wb_data,
 			o_rs1_data => rs1_data,
 			o_rs2_data => rs2_data
 		);
 
-	ext: ext12to32
+	----------------------------------------------------------------
+	-- 12-bit sign extender
+	----------------------------------------------------------------
+	ext: entity work.ext12to32
 		port map(
-			i_A => i_imm12,
-			i_SEXT => '1',	-- always sign extend for this lab
-			o_Y => imm32
+			i_A    => i_imm12,
+			i_SEXT => '1',
+			o_Y    => imm32
 		);
 
-	-- ALUSrc mux
-	alu_b <= rs2_data when i_ALUSrc = '0' else imm32;
-
-	-- ALU add/sub
-	process(rs1_data, alu_b, i_nAddSub)
-		variable a_s : signed(31 downto 0);
-		variable b_s : signed(31 downto 0);
-		variable c_s : signed(31 downto 0);
+	----------------------------------------------------------------
+	-- ALUSrc mux (32-bit) = 32 copies of scalar mux2t1_df
+	-- 0 -> rs2_data
+	-- 1 -> imm32
+	----------------------------------------------------------------
+	gen_alu_src_mux: for i in 0 to 31 generate
 	begin
-		a_s := signed(rs1_data);
-		b_s := signed(alu_b);
+		alu_src_mux_bit: entity work.mux2t1_df(dataflow)
+			port map(
+				i_S  => i_ALUSrc,
+				i_D0 => rs2_data(i),
+				i_D1 => imm32(i),
+				o_O  => alu_b(i)
+			);
+	end generate;
 
-		if i_nAddSub = '1' then
-			c_s := a_s - b_s;
-		else
-			c_s := a_s + b_s;
-		end if;
+	----------------------------------------------------------------
+	-- ALU add/sub path built structurally
+	-- i_nAddSub = 0 -> add  : A + B + 0
+	-- i_nAddSub = 1 -> sub  : A + ~B + 1
+	----------------------------------------------------------------
 
-		alu_out <= std_logic_vector(c_s);
-	end process;
+	-- invert B
+	u_inv: entity work.OnesComp_N
+		generic map(
+			N => 32
+		)
+		port map(
+			i_A => alu_b,
+			o_O => b_inv
+		);
 
-	-- FIX: mem.vhd is word addressed, alu_out is byte addr -> shift right 2
-	-- yeah this is the annoying "why is memory like this" part
-	mem_addr <= std_logic_vector((unsigned(alu_out) srl 2)(AW-1 downto 0));
+	-- choose B or ~B
+	gen_bsel_mux: for i in 0 to 31 generate
+	begin
+		bsel_mux_bit: entity work.mux2t1_df(dataflow)
+			port map(
+				i_S  => i_nAddSub,
+				i_D0 => alu_b(i),
+				i_D1 => b_inv(i),
+				o_O  => b_sel(i)
+			);
+	end generate;
 
-	dmem: mem
+	-- ripple-carry adder
+	u_add: entity work.adderN_rca
+		generic map(
+			N => 32
+		)
+		port map(
+			iA    => rs1_data,
+			iB    => b_sel,
+			iCin  => i_nAddSub,
+			oS    => alu_out,
+			oCout => alu_cout
+		);
+
+	----------------------------------------------------------------
+	-- Memory is word-addressed, ALU output is byte address
+	----------------------------------------------------------------
+	mem_addr <= alu_out(AW+1 downto 2);
+
+	----------------------------------------------------------------
+	-- Data memory
+	----------------------------------------------------------------
+	dmem: entity work.mem
 		generic map(
 			DATA_WIDTH => DW,
 			ADDR_WIDTH => AW
 		)
 		port map(
-			clk => i_CLK,
+			clk  => i_CLK,
 			addr => mem_addr,
 			data => rs2_data,
-			we => i_MemWrite,
-			q => mem_q
+			we   => i_MemWrite,
+			q    => mem_q
 		);
 
-	-- writeback mux
-	wb_data <= alu_out when i_MemToReg = '0' else mem_q;
+	----------------------------------------------------------------
+	-- MemToReg mux (32-bit) = 32 copies of scalar mux2t1_df
+	-- 0 -> alu_out
+	-- 1 -> mem_q
+	----------------------------------------------------------------
+	gen_wb_mux: for i in 0 to 31 generate
+	begin
+		wb_mux_bit: entity work.mux2t1_df(dataflow)
+			port map(
+				i_S  => i_MemToReg,
+				i_D0 => alu_out(i),
+				i_D1 => mem_q(i),
+				o_O  => wb_data(i)
+			);
+	end generate;
 
-	-- debug outs
+	----------------------------------------------------------------
+	-- Debug outputs
+	----------------------------------------------------------------
 	o_rs1_data <= rs1_data;
 	o_rs2_data <= rs2_data;
 	o_alu_out  <= alu_out;

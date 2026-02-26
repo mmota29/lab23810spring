@@ -3,35 +3,65 @@ K4
 z2
 Z0 !s12c _opt
 Z1 !s99 nomlopt
-Z2 !s12c _opt1
+Z2 !s12c _opt2
 R1
-Z3 !s12c _opt2
+R2
+R1
+R2
+R1
+R2
+R1
+Z3 !s12c _opt1
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
 R1
 R0
+R1
+R3
+R1
+R2
+R1
+R0
+R1
+R3
+R1
+R2
+R1
+R0
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
 R1
 R2
 R1
 R3
 R1
-R0
-R1
-R2
-R1
-R2
-R1
-R2
-R1
-R2
-R1
-R2
-R1
-R2
-R1
 R3
-R1
-R2
-R1
-R2
 R1
 R0
 R1
@@ -44,24 +74,24 @@ R1
 cModel Technology
 Z4 d/home/mmota29/Desktop/lab13810spring/Lab1(4)
 T_opt
-!s110 1771471231
-VbXjRUa3OFg>RMQWoMa=AF2
+!s110 1772130778
+Vnj7VSZlCn^Yf4b@o`MMZh2
 04 7 3 work tb_dmem sim 1
-=1-000ae431a4f1-6996817f-78146-b196
+=1-000ae431a4f1-69a091da-a6fab-7a68
 R1
 Z5 !s12f OEM100
 Z6 !s12b OEM100
 Z7 !s124 OEM100
 Z8 !s135 nogc
-Z9 o-quiet -auto_acc_if_foreign -work work +acc
+Z9 o-quiet -auto_acc_if_foreign -work work
 Z10 tCvgOpt 0
 n@_opt
 Z11 OL;O;2025.1_2;82
 T_opt1
-!s110 1771468559
-V6Ih9c7eVzEA]QNgOkk7;23
-04 23 3 work tb_myfirstriscvdatapath sim 1
-=1-000ae431a4f1-6996770e-dda5e-9057
+!s110 1772121194
+VMkh3fZ9kMl0aj@=?m]X?82
+Z12 04 24 3 work tb_mysecondriscvdatapath sim 1
+=1-000ae431a4f1-69a06c6a-2d0f1-106d
 R1
 R5
 R6
@@ -73,62 +103,206 @@ n@_opt1
 R11
 R4
 T_opt2
-!s110 1771467403
-V<6iLM;KTZAO[ee4HcBk5f0
-04 17 3 work tb_mux32to1_32bit sim 1
-=1-000ae431a4f1-6996728b-6d9f2-83ff
+!s110 1772129269
+V`M8VfH?3z7<O1lToIc5Oh1
+R12
+=1-000ae431a4f1-69a08bf5-39572-6be1
 R1
 R5
 R6
 R7
 R8
-R9
+o-quiet -auto_acc_if_foreign -work work +acc
 R10
 n@_opt2
 R11
 R4
-Edecoder_5to32
-Z12 w1771400542
-Z13 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Eadder_sub_n
+Z13 w1769707011
 Z14 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z15 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 576
+!i122 1995
 Z16 d/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2
-Z17 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
-Z18 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
+Z17 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adder_sub_N.vhd
+Z18 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adder_sub_N.vhd
 l0
-L5 1
-V11GLXi5^4Tf;^@E0o52z>3
-!s100 i^eTKI=>6DIKUQLJR:>MX2
+L17 1
+Vc`WXCb^A?HWWg:=XbzWJJ1
+!s100 J2:8hg5iLJ]72zgFCJY=G0
 Z19 OL;C;2025.1_2;82
-33
-Z20 !s110 1771470999
+32
+Z20 !s110 1772130764
 !i10b 1
 !i113 0
-Z21 o-work work -2008 -explicit
+Z21 o-work work -2002 -explicit
 Z22 tExplicit 1 CvgOpt 0
-Artl
-R13
+Astructural
 R14
 R15
-Z23 DEx4 work 13 decoder_5to32 0 22 11GLXi5^4Tf;^@E0o52z>3
-!i122 576
-l14
-Z24 L13 14
-VzIXL?3]4F5Oob]m;Eg3gK2
-!s100 I3R73TnoO@3N5VzkU;;>X1
+DEx4 work 11 adder_sub_n 0 22 c`WXCb^A?HWWg:=XbzWJJ1
+!i122 1995
+l62
+L28 68
+V`N[a7I?eSRDYYkD`GZXen1
+!s100 ]6T7hGZ2a9QN3_8:KaeS=1
 R19
-33
+32
 R20
 !i10b 1
 !i113 0
 R21
 R22
-Abehave
-R13
+Eaddern_df
+Z23 w1769706118
+Z24 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 R14
 R15
-R23
+!i122 1996
+R16
+Z25 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_df.vhd
+Z26 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_df.vhd
+l0
+Z27 L11 1
+VC``AVjMKT_VAk^PzEC]_>2
+!s100 76D=bYjZgSFYWh[79g3Pd0
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Adataflow
+R24
+R14
+R15
+DEx4 work 9 addern_df 0 22 C``AVjMKT_VAk^PzEC]_>2
+!i122 1996
+l25
+L22 15
+VP>EAkEl5DJS@9z6Z<f8T`2
+!s100 2QUNd?6`4e0JQcLm0kd>72
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Eaddern_rca
+Z28 w1769705615
+R14
+R15
+!i122 1997
+R16
+Z29 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_rca.vhd
+Z30 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/adderN_rca.vhd
+l0
+R27
+V>eW08M@gM^o0c`c0enKb51
+!s100 ThH9;7J>babb0:@oUhmN@1
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Astructural
+R14
+R15
+DEx4 work 10 addern_rca 0 22 >eW08M@gM^o0c`c0enKb51
+!i122 1997
+l36
+L22 33
+VZHT]H8P5@7eh[l`UOVK703
+!s100 Ic:a?9ljaoNl7k_;3bB3[0
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Ealu32_addsub
+Z31 w1772128399
+R24
+R14
+R15
+!i122 2008
+R16
+Z32 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/alu32_addsub.vhd
+Z33 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/alu32_addsub.vhd
+l0
+L5 1
+VVXCJjV?dMhZ>JZah0P?`F1
+!s100 MfLGCB_m;kFQ9>Tli@TZK3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Abehavioral
+R24
+R14
+R15
+Z34 DEx4 work 12 alu32_addsub 0 22 VXCJjV?dMhZ>JZah0P?`F1
+!i122 2008
+l15
+L14 11
+VoZCBGm[Lf;IFiI<`iK4Ti1
+!s100 Qzc@^ML;mZn9aeZKnQ75C3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Edecoder_5to32
+Z35 w1771400542
+R24
+R14
+R15
+!i122 1979
+R16
+Z36 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
+Z37 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/decoder_5to32.vhd
+l0
+L5 1
+V11GLXi5^4Tf;^@E0o52z>3
+!s100 i^eTKI=>6DIKUQLJR:>MX2
+R19
+33
+Z38 !s110 1772130763
+!i10b 1
+!i113 0
+Z39 o-work work -2008 -explicit
+R22
+Artl
+R24
+R14
+R15
+Z40 DEx4 work 13 decoder_5to32 0 22 11GLXi5^4Tf;^@E0o52z>3
+!i122 1979
+l14
+Z41 L13 14
+VzIXL?3]4F5Oob]m;Eg3gK2
+!s100 I3R73TnoO@3N5VzkU;;>X1
+R19
+33
+R38
+!i10b 1
+!i113 0
+R39
+R22
+Abehave
+R24
+R14
+R15
+R40
 !i122 251
 l14
 L13 15
@@ -139,139 +313,314 @@ R19
 !s110 1771362450
 !i10b 1
 !i113 0
-R21
+R39
 R22
-Z25 w1770762610
+Z42 w1770762610
 Edffg
-Z26 w1755893248
+Z43 w1755893248
 R14
 R15
-!i122 573
+!i122 1976
 R16
-Z27 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
-Z28 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
+Z44 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
+Z45 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/dffg.vhd
 l0
-Z29 L23 1
+Z46 L23 1
 VU4Z@1hOmhj;RN;m=o`PE50
 !s100 T4gcXQGMCgKJbn8XhBM;b0
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Amixed
 R14
 R15
 DEx4 work 4 dffg 0 22 U4Z@1hOmhj;RN;m=o`PE50
-!i122 573
+!i122 1976
 l37
 L33 29
 VcGk`70hTzUBQXe@mOZQMz3
 !s100 iOdlTUid@@]UimFK_53^C1
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Eext12to32
-Z30 w1771403469
+Z47 w1771403469
 R14
 R15
-!i122 587
+!i122 1990
 R16
-Z31 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd
-Z32 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd
+Z48 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd
+Z49 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/ext12to32.vhd
 l0
 L4 1
 VmKM4O@ezG6X?4@Wj2_7jb1
 !s100 VL5;h`ZQ>W2h1HDKa73LF3
 R19
 32
-Z33 !s110 1771471000
+R38
 !i10b 1
 !i113 0
-Z34 o-work work -2002 -explicit
+R21
 R22
 Artl
 R14
 R15
-DEx4 work 9 ext12to32 0 22 mKM4O@ezG6X?4@Wj2_7jb1
-!i122 587
+Z50 DEx4 work 9 ext12to32 0 22 mKM4O@ezG6X?4@Wj2_7jb1
+!i122 1990
 l13
 L12 14
 V3D6RkceJVPkB^a7niiEm00
 !s100 kH<GW3b9T87M^?8R<?PO;3
 R19
 32
-R33
+R38
 !i10b 1
 !i113 0
-R34
+R21
 R22
-Emem
-R26
-R13
+Efull_adder
+Z51 w1769705139
 R14
 R15
-!i122 574
+!i122 1998
 R16
-Z35 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
-Z36 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
+Z52 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/full_adder.vhd
+Z53 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/full_adder.vhd
+l0
+L20 1
+VzEji6oSLd84i5^A?_ng3n0
+!s100 H2_kj@4SDi:b]3QaED[Un1
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Astructural
+R14
+R15
+DEx4 work 10 full_adder 0 22 zEji6oSLd84i5^A?_ng3n0
+!i122 1998
+l63
+L30 98
+Vem?JZEcj<ZMVVFT0QnXB<2
+!s100 ?OKj:eB>]19@5Bf@?BcDf3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Emem
+R43
+R24
+R14
+R15
+!i122 1977
+R16
+Z54 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
+Z55 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mem.vhd
 l0
 L8 1
 V_0bz9Xd43MLgPRSR5AT?g2
 !s100 fRlcaiTJZJ1H;nZh;8=LI3
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Artl
-R13
+R24
 R14
 R15
-Z37 DEx4 work 3 mem 0 22 _0bz9Xd43MLgPRSR5AT?g2
-!i122 574
+Z56 DEx4 work 3 mem 0 22 _0bz9Xd43MLgPRSR5AT?g2
+!i122 1977
 l37
 L27 24
 VP<hJO`eNK:GK56cZVLj@g0
 !s100 OI8_3><BhDkT3l3n8`OXd3
 R19
 33
+R38
+!i10b 1
+!i113 0
+R39
+R22
+Emux2t1
+Z57 w1769103921
+R14
+R15
+!i122 1999
+R16
+Z58 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1.vhd
+Z59 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1.vhd
+l0
+Z60 L12 1
+VD1[EDP79_EbSQjm7NBn<a0
+!s100 In4:0e5QLmIaWzIYmN6;81
+R19
+32
 R20
 !i10b 1
 !i113 0
 R21
 R22
+Astructural
+R14
+R15
+DEx4 work 6 mux2t1 0 22 D1[EDP79_EbSQjm7NBn<a0
+!i122 1999
+l47
+L21 80
+VLo>3cOF0dhlf=Hn==?L_10
+!s100 KeDLlka[T1AR37e]DWU3z3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Emux2t1_32bit
+Z61 w1772128375
+R14
+R15
+!i122 2007
+R16
+Z62 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mux2t1_32bit.vhd
+Z63 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mux2t1_32bit.vhd
+l0
+L4 1
+V8?MGVZ6ia:?6Y`ciWOVKA3
+!s100 ]X:2;O9U4K]b@fG?67;c?1
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Adataflow
+R14
+R15
+Z64 DEx4 work 12 mux2t1_32bit 0 22 8?MGVZ6ia:?6Y`ciWOVKA3
+!i122 2007
+l14
+L13 4
+V:zL1_j^=FFdCk9=i?D1923
+!s100 dUo`M0MIbaA>kYklz50??1
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Emux2t1_df
+Z65 w1769104412
+R14
+R15
+!i122 2000
+R16
+Z66 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1_df.vhd
+Z67 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/mux2t1_df.vhd
+l0
+R60
+VRj0khldRbd>m^A7J:0>]L1
+!s100 7S4h=Vm_MUe6D^32a5LH53
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Adataflow
+R14
+R15
+DEx4 work 9 mux2t1_df 0 22 Rj0khldRbd>m^A7J:0>]L1
+!i122 2000
+l22
+L21 4
+V9P9?>zdZc5aTVLaaF;II=1
+!s100 G`jSYVdFUk1ddORnn`4DP1
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Emux2t1_n
+Z68 w1772128075
+R14
+R15
+!i122 1631
+R16
+Z69 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mySecondRISCVDatapath.vhd
+Z70 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mySecondRISCVDatapath.vhd
+l0
+L9 1
+VL:QIV^Oi`jQ3`20CEV<<V2
+!s100 4UGeQlXNOD8lME:1UVcJ52
+R19
+33
+Z71 !s110 1772128084
+!i10b 1
+!i113 0
+R39
+R22
+Astructural
+R14
+R15
+DEx4 work 8 mux2t1_n 0 22 L:QIV^Oi`jQ3`20CEV<<V2
+!i122 1631
+l28
+L19 20
+VJe<UnfIDT4E]2m2?_hzB?0
+!s100 7:>ef0Vc[jkOhj5JidU4c3
+R19
+33
+R71
+!i10b 1
+!i113 0
+R39
+R22
 Pmux32_pkg
-R13
+R24
 R14
 R15
 !i122 386
-Z38 w1771400308
+Z72 w1771400308
 R16
-Z39 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
-Z40 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
+Z73 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
+Z74 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/mux32to1_32bit.vhd
 l0
 L6 3
 Vn60MSlc7f_eI2?Z;kW2W]2
 !s100 ^a91;eQnlbQJK=ddIgUCo2
 R19
 33
-Z41 !s110 1771400575
+Z75 !s110 1771400575
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Bbody
 DPx4 work 9 mux32_pkg 0 22 n60MSlc7f_eI2?Z;kW2W]2
-R13
+R24
 R14
 R15
 !i122 386
@@ -281,47 +630,47 @@ VW7<L7MaeYaMQ:9z30iFSV0
 !s100 ndlZj]73LbT3C`P1n20TU1
 R19
 33
-R41
+R75
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Emux32to1_32bit
-Z42 w1771400602
-R13
+Z76 w1771400602
+R24
 R14
 R15
-!i122 577
+!i122 1980
 R16
-R39
-R40
+R73
+R74
 l0
 L5 1
 V36[gQn;oAJE[W<h:AbBQV2
 !s100 JO:S?mW9elo2MaARGAFkf2
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Artl
-R13
+R24
 R14
 R15
 DEx4 work 14 mux32to1_32bit 0 22 36[gQn;oAJE[W<h:AbBQV2
-!i122 577
+!i122 1980
 l14
-R24
+R41
 VKedj=>XIk[;MWNF[dZILj0
 !s100 m36]YoV3Hdeo2=]1LVCfi1
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Adataflow
 R14
@@ -334,35 +683,35 @@ VV>4Qn]DMR;?cGl<W]2j7O1
 !s100 zGIlL_NF8oDA?zT:gY8012
 R19
 33
-Z43 !s110 1770914684
+Z77 !s110 1770914684
 !i10b 1
 !i113 0
-R21
+R39
 R22
 w1770914213
 Pmux_pkg
-R13
+R24
 R14
 R15
 !i122 353
-Z44 w1771394345
+Z78 w1771394345
 R16
-R39
-R40
+R73
+R74
 l0
 L7 3
 VW6zLE4KNzU6efODgJ?Ri33
 !s100 XRL0a<oLbFebeTJUCJIjd2
 R19
 33
-Z45 !s110 1771399940
+Z79 !s110 1771399940
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Bbody
 DPx4 work 7 mux_pkg 0 22 W6zLE4KNzU6efODgJ?Ri33
-R13
+R24
 R14
 R15
 !i122 353
@@ -372,142 +721,181 @@ VD2^;OIHnG@NBBR8_]jkzP3
 !s100 3A@Ag99b03O<`Y_FCJ^772
 R19
 33
-R45
+R79
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Emyfirstriscvdatapath
-Z46 w1771401568
-R13
+Z80 w1771401568
+R24
 R14
 R15
-!i122 584
+!i122 1987
 R16
-Z47 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/myFirstRISCVDatapath.vhd
-Z48 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/myFirstRISCVDatapath.vhd
+Z81 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/myFirstRISCVDatapath.vhd
+Z82 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/myFirstRISCVDatapath.vhd
 l0
 L5 1
 VlUki5[U?[4<SBG[`Zh?Fk0
 !s100 f?<=]KGbPW5JOP6OzN7k13
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Astructural
-R13
+R24
 R14
 R15
 DEx4 work 20 myfirstriscvdatapath 0 22 lUki5[U?[4<SBG[`Zh?Fk0
-!i122 584
+!i122 1987
 l51
 L28 67
 V6@eo9;kHZHf[XeGXMN2e80
 !s100 =VigjzBN21:JJLc6]`D6F3
 R19
 33
+R38
+!i10b 1
+!i113 0
+R39
+R22
+Emysecondriscvdatapath
+Z83 w1772128396
+R14
+R15
+!i122 1992
+R16
+R69
+R70
+l0
+L4 1
+VNboa>Gz]]___I1nSPB2iS1
+!s100 Mf;f9mmOXWC83]UEJHegT2
+R19
+33
+R20
+!i10b 1
+!i113 0
+R39
+R22
+Astructural
+R56
+R24
+R34
+R64
+R50
+Z84 DEx4 work 12 regfile_rv32 0 22 FHZ6z]gE=m>@EmNG4<h3N2
+R14
+R15
+DEx4 work 21 mysecondriscvdatapath 0 22 Nboa>Gz]]___I1nSPB2iS1
+!i122 1992
+l47
+L34 89
+VZOT`T_D;mPiln6F12eI3M3
+!s100 Va6@iHjmiHPh0Pmdz;=H12
+R19
+33
+R20
+!i10b 1
+!i113 0
+R39
+R22
+Eonescomp_n
+Z85 w1769703111
+R14
+R15
+!i122 2001
+R16
+Z86 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/OnesComp_N.vhd
+Z87 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/OnesComp_N.vhd
+l0
+L16 1
+VGU>Y57=H4ahHzaTgSE`UG2
+!s100 JTa[2IRzSZJ5c;T]WCR_F1
+R19
+32
 R20
 !i10b 1
 !i113 0
 R21
 R22
-Emysecondriscvdatapath
-Z49 w1771403864
-R13
-R14
-R15
-!i122 589
-R16
-Z50 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mySecondRISCVDatapath.vhd
-Z51 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/mySecondRISCVDatapath.vhd
-l0
-L5 1
-VBRX_eN1C7Sf2EHihGz2G>0
-!s100 _27IoVDFT;=f`S?LAA?RJ2
-R19
-32
-R33
-!i10b 1
-!i113 0
-R34
-R22
 Astructural
-R13
 R14
 R15
-DEx4 work 21 mysecondriscvdatapath 0 22 BRX_eN1C7Sf2EHihGz2G>0
-!i122 589
-l91
-L39 125
-V@k:86SSoDG1PomiQ5NdVA3
-!s100 _o^WGmkPG^k?EWbIEjm5^0
+DEx4 work 10 onescomp_n 0 22 GU>Y57=H4ahHzaTgSE`UG2
+!i122 2001
+l33
+L24 21
+VI^58h^Wb4fdaok7`L:V4g3
+!s100 m2>@Ood9^AA^?AnF:ZZA_0
 R19
 32
-R33
+R20
 !i10b 1
 !i113 0
-R34
+R21
 R22
 Ereg_n
-Z52 w1771400477
+Z88 w1771400477
 R14
 R15
-!i122 578
+!i122 1981
 R16
-Z53 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd
-Z54 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd
+Z89 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd
+Z90 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/reg_N.vhd
 l0
 L4 1
 V<V;]?`dfgJ`>=JS8b48E70
 !s100 GT4l7mnGImMV_Id=2az2I3
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Astructural
 R14
 R15
 DEx4 work 5 reg_n 0 22 <V;]?`dfgJ`>=JS8b48E70
-!i122 578
+!i122 1981
 l27
 L15 26
 VWZdgO5PDgoGiQNOG`ERja0
 !s100 aA86Q9`l4gBB[oC`[?D3K0
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Eregfile32
-Z55 w1770914617
-R13
+Z91 w1770914617
+R24
 R14
 R15
 !i122 143
 R16
-Z56 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd
-Z57 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd
+Z92 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd
+Z93 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/regfile_rv32.vhd
 l0
 L6 1
 VA[:dgKQIhDX?KPQCd9Qmb0
 !s100 ^5e_1n]>m9:[zH3lcfcGf3
 R19
 33
-R43
+R77
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Astructural
-R13
+R24
 R14
 R15
 DEx4 work 9 regfile32 0 22 A[:dgKQIhDX?KPQCd9Qmb0
@@ -518,141 +906,372 @@ VS^kKm;fF2DLMT93Ii_:fk1
 !s100 m<<?mKBk_n:Y81IEmnM1e2
 R19
 33
-R43
+R77
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Eregfile_rv32
-Z58 w1771400654
+Z94 w1771400654
 R14
 R15
-!i122 579
+!i122 1982
 R16
-R56
-R57
+R92
+R93
 l0
 L4 1
 VFHZ6z]gE=m>@EmNG4<h3N2
 !s100 KdMH@[Nb0FChc^m8=m;=o2
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Astructural
 R14
 R15
-DEx4 work 12 regfile_rv32 0 22 FHZ6z]gE=m>@EmNG4<h3N2
-!i122 579
+R84
+!i122 1982
 l56
 L20 89
 V]FMPNhZeQ7CWh0=hE2gPz1
 !s100 B=d]z28:JmXGH3f00nLCI1
 R19
 33
+R38
+!i10b 1
+!i113 0
+R39
+R22
+Etb_adder_sub_n
+Z95 w1770312568
+R14
+R15
+!i122 2002
+R16
+Z96 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_adder_sub_N.vhd
+Z97 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_adder_sub_N.vhd
+l0
+Z98 L10 1
+V_LC`@[bY6QLSIKjZBjlEP3
+!s100 [WmmWJDoC?LR4MlPi=DOc3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Atb
+R14
+R15
+DEx4 work 14 tb_adder_sub_n 0 22 _LC`@[bY6QLSIKjZBjlEP3
+!i122 2002
+l34
+L13 90
+VX`?U;Y]Lb]971=3Ln4;JY1
+!s100 1:g6>^nX:nHjCi3X^[25d2
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Etb_addern_compare_32
+Z99 w1769706058
+R14
+R15
+!i122 1994
+R16
+Z100 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/ tb_adderN_compare_32.vhd
+Z101 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/ tb_adderN_compare_32.vhd
+l0
+R27
+VZ]:R[18MWO6fOfM;9J<d03
+!s100 5O=40[FCh2O?4bScBUg3]3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Atb
+R14
+R15
+DEx4 work 20 tb_addern_compare_32 0 22 Z]:R[18MWO6fOfM;9J<d03
+!i122 1994
+l50
+L14 132
+VU77H4A?SgBb0T3bP_Un7V0
+!s100 5PRShb_BOa>]MdFPiV>QL0
+R19
+32
 R20
 !i10b 1
 !i113 0
 R21
 R22
 Etb_decoder_5to32
-Z59 w1771400571
+Z102 w1771400571
 R14
 R15
-!i122 580
+!i122 1983
 R16
-Z60 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
-Z61 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
+Z103 8/home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
+Z104 F/home/mmota29/Desktop/lab2/lab23810spring/RegFile/tb_decoder_5to32.vhd
 l0
 L4 1
 V@Z?igPk_`aAzA[f13VGWT0
 !s100 VmFXl8fHbOGddbX]^a`z31
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Asim
 R14
 R15
 DEx4 work 16 tb_decoder_5to32 0 22 @Z?igPk_`aAzA[f13VGWT0
-!i122 580
+!i122 1983
 l19
 L7 38
 VVI^RdJgMJM_nN993^=1HE0
 !s100 <lJBJOS[KG9CdckHMe19C1
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Etb_dffg
-R26
+R43
 R14
 R15
-!i122 575
+!i122 1978
 R16
-Z62 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
-Z63 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
+Z105 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
+Z106 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dffg.vhd
 l0
-R29
+R46
 Vb?c`NJ6j@7V^f1]cl5I@c2
 !s100 _@1Y`b4>C@@3dFKeCkFbz1
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Abehavior
 R14
 R15
 DEx4 work 7 tb_dffg 0 22 b?c`NJ6j@7V^f1]cl5I@c2
-!i122 575
+!i122 1978
 l45
 L27 75
 VR?Uh^AN?MmeLNFMUYjoMe2
 !s100 McQ;1U@Ti8TCBh>42ldW82
 R19
 33
-R20
+R38
 !i10b 1
 !i113 0
-R21
+R39
 R22
 Etb_dmem
-Z64 w1771402796
-R13
+Z107 w1771402796
+R24
 R14
 R15
-!i122 586
+!i122 1989
 R16
-Z65 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dmem.vhd
-Z66 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dmem.vhd
+Z108 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dmem.vhd
+Z109 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_dmem.vhd
 l0
 L5 1
 VmG`1e^o0eb]>K;Q]zS19l2
 !s100 lmMKjk2Vn`>TIQdHfT97a3
 R19
 32
-R33
+R38
 !i10b 1
 !i113 0
-R34
+R21
 R22
 Asim
-R37
-R13
+R56
+R24
 R14
-R15m255
+R15
+DEx4 work 7 tb_dmem 0 22 mG`1e^o0eb]>K;Q]zS19l2
+!i122 1989
+l19
+L8 79
+V9db2^LULFMVYiZD:MO_`43
+!s100 d[>0DXkY`S9U_A^6N8:J`0
+R19
+32
+R38
+!i10b 1
+!i113 0
+R21
+R22
+Etb_ext12to32
+Z110 w1771403501
+R14
+R15
+!i122 1991
+R16
+Z111 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_ext12to32.vhd
+Z112 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/tb_ext12to32.vhd
+l0
+L4 1
+Vf1^Temam69L`_dn`d;i`[3
+!s100 jXK915ldjCLQ5><:;F=gR1
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Asim
+R14
+R15
+DEx4 work 12 tb_ext12to32 0 22 f1^Temam69L`_dn`d;i`[3
+!i122 1991
+l20
+L7 46
+VDb17l8nBYBimP0T9ck1Kg1
+!s100 d@1G;zfZBzYRl:2?cO@ci3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Etb_mux2t1
+Z113 w1769103935
+R14
+R15
+!i122 2003
+R16
+Z114 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1.vhd
+Z115 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1.vhd
+l0
+L9 1
+V^4Ue>B@`FWOW8MH`eCA?42
+!s100 MPlMIM?6U91e=N<LQFG<41
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Atb
+R14
+R15
+DEx4 work 9 tb_mux2t1 0 22 ^4Ue>B@`FWOW8MH`eCA?42
+!i122 2003
+l28
+Z116 L12 42
+Vaa308FL]LoNIcOTF]KQIQ1
+!s100 AZXll`;8HnWQKBbM0Z?:20
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Etb_mux2t1_df
+Z117 w1769104426
+R14
+R15
+!i122 2004
+R16
+Z118 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_df.vhd
+Z119 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_df.vhd
+l0
+L9 1
+V0aNf8j8zaAFBY2QTD48li1
+!s100 ]D61DB^X3eDOX?kSTk=M:3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Atb
+R14
+R15
+DEx4 work 12 tb_mux2t1_df 0 22 0aNf8j8zaAFBY2QTD48li1
+!i122 2004
+l28
+R116
+V_4SI:f>7MoR^TIeaTLDAU3
+!s100 THUIo=P?f53kTK4XB3bA=2
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Etb_mux2t1_n
+Z120 w1769701987
+R14
+R15
+!i122 2005
+R16
+Z121 8/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_N.vhd
+Z122 F/home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/Lab1(4)/tb_mux2t1_N.vhd
+l0
+R98
+V5NL9e5GCSg=NnEBBcT=;D1
+!s100 LBn]K:k^0UJh`lLaTomHc3
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Atb
+R14
+R15
+DEx4 work 11 tb_mux2t1_n 0 22 5NL9e5GCSg=NnEBBcT=;D1
+!i122 2005
+l33
+L13 72
+V<nejU<<`cBCdEQM7;mQGQ0
+!s100 Z]i5EfzQicYCFZXg[hm<90
+R19
+32
+R20
+!i10b 1
+!i113 0
+R21
+R22
+Etb_mux32to1_32bit
+Z123 w1771400630
+R24
+R14
+R15
+!i122 1984
+R16
+Z124 8/home/mmota29/Desktom255
 K4
 z2
 !s8c locked

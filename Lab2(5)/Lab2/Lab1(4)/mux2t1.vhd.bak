@@ -1,0 +1,85 @@
+-------------------------------------------------------------------------
+-- Department of Electrical and Computer Engineering
+-- Iowa State University
+-------------------------------------------------------------------------
+-- mux2t1.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: Structural 2:1 mux
+--   oO = (not iS and iD0) or (iS and iD1)
+-------------------------------------------------------------------------
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity mux2t1 is
+  port(
+    iS  : in  std_logic;
+    iD0 : in  std_logic;
+    iD1 : in  std_logic;
+    oO  : out std_logic
+  );
+end mux2t1;
+
+architecture structural of mux2t1 is
+
+  component invg is
+    port(
+      iA : in  std_logic;
+      oF : out std_logic
+    );
+  end component;
+
+  component andg2 is
+    port(
+      iA : in  std_logic;
+      iB : in  std_logic;
+      oF : out std_logic
+    );
+  end component;
+
+  component org2 is
+    port(
+      iA : in  std_logic;
+      iB : in  std_logic;
+      oF : out std_logic
+    );
+  end component;
+
+  signal s_nS     : std_logic;
+  signal s_andD0  : std_logic;
+  signal s_andD1  : std_logic;
+
+begin
+
+  -- s_nS = not iS
+  U_INV: invg
+    port map(
+      iA => iS,
+      oF => s_nS
+    );
+
+  -- s_andD0 = (not iS) and iD0
+  U_AND0: andg2
+    port map(
+      iA => s_nS,
+      iB => iD0,
+      oF => s_andD0
+    );
+
+  -- s_andD1 = iS and iD1
+  U_AND1: andg2
+    port map(
+      iA => iS,
+      iB => iD1,
+      oF => s_andD1
+    );
+
+  -- oO = s_andD0 or s_andD1
+  U_OR: org2
+    port map(
+      iA => s_andD0,
+      iB => s_andD1,
+      oF => oO
+    );
+
+end structural;
+

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------------
+-- tb_mux2t1.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: Testbench for mux2t1. Exhausts all truth-table cases.
+-------------------------------------------------------------------------
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity tb_mux2t1 is
+end tb_mux2t1;
+
+architecture tb of tb_mux2t1 is
+
+  component mux2t1 is
+    port(
+      iS  : in  std_logic;
+      iD0 : in  std_logic;
+      iD1 : in  std_logic;
+      oO  : out std_logic
+    );
+  end component;
+
+  signal s_iS  : std_logic := '0';
+  signal s_iD0 : std_logic := '0';
+  signal s_iD1 : std_logic := '0';
+  signal s_oO  : std_logic;
+
+begin
+
+  DUT: mux2t1
+    port map(
+      iS  => s_iS,
+      iD0 => s_iD0,
+      iD1 => s_iD1,
+      oO  => s_oO
+    );
+
+  P_TEST: process
+  begin
+    -- iS iD0 iD1 -> expected oO
+
+    -- iS=0 selects iD0
+    s_iS <= '0'; s_iD0 <= '0'; s_iD1 <= '0'; wait for 10 ns;  -- oO=0
+    s_iS <= '0'; s_iD0 <= '0'; s_iD1 <= '1'; wait for 10 ns;  -- oO=0
+    s_iS <= '0'; s_iD0 <= '1'; s_iD1 <= '0'; wait for 10 ns;  -- oO=1
+    s_iS <= '0'; s_iD0 <= '1'; s_iD1 <= '1'; wait for 10 ns;  -- oO=1
+
+    -- iS=1 selects iD1
+    s_iS <= '1'; s_iD0 <= '0'; s_iD1 <= '0'; wait for 10 ns;  -- oO=0
+    s_iS <= '1'; s_iD0 <= '0'; s_iD1 <= '1'; wait for 10 ns;  -- oO=1
+    s_iS <= '1'; s_iD0 <= '1'; s_iD1 <= '0'; wait for 10 ns;  -- oO=0
+    s_iS <= '1'; s_iD0 <= '1'; s_iD1 <= '1'; wait for 10 ns;  -- oO=1
+
+    wait;
+  end process;
+
+end tb;

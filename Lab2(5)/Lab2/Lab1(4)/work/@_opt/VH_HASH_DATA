@@ -1,0 +1,43 @@
+[N
+6
+4
+1 N
+2
+10 addern_rca
+1
+49 /home/mmota29/Desktop/lab13810spring/Lab1(4)/work
+6
+8 dataflow
+3
+10 structural
+5
+9 addern_df
+]
+[G
+1
+2
+3
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]
+[G
+1
+5
+6
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]

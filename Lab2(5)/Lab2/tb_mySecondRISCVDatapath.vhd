@@ -1,12 +1,17 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
 entity tb_mySecondRISCVDatapath is
 end tb_mySecondRISCVDatapath;
 
 architecture sim of tb_mySecondRISCVDatapath is
+
 	component mySecondRISCVDatapath
-		generic(AW : natural := 10; DW : natural := 32);
+		generic(
+			AW : natural := 10;
+			DW : natural := 32
+		);
 		port(
 			i_CLK : in std_logic;
 			i_RST : in std_logic;
@@ -32,7 +37,7 @@ architecture sim of tb_mySecondRISCVDatapath is
 		);
 	end component;
 
-	constant AW : natural := 10;
+	constant AW_C : natural := 10;
 
 	signal clk : std_logic := '0';
 	signal rst : std_logic := '0';
@@ -43,17 +48,27 @@ architecture sim of tb_mySecondRISCVDatapath is
 	signal MemWrite : std_logic := '0';
 	signal MemToReg : std_logic := '0';
 
-	signal rs1 : std_logic_vector(4 downto 0) := (others => '0');
-	signal rs2 : std_logic_vector(4 downto 0) := (others => '0');
-	signal rd  : std_logic_vector(4 downto 0) := (others => '0');
+	signal rs1   : std_logic_vector(4 downto 0) := (others => '0');
+	signal rs2   : std_logic_vector(4 downto 0) := (others => '0');
+	signal rd    : std_logic_vector(4 downto 0) := (others => '0');
 	signal imm12 : std_logic_vector(11 downto 0) := (others => '0');
 
 	signal rs1d : std_logic_vector(31 downto 0);
 	signal rs2d : std_logic_vector(31 downto 0);
 	signal aluo : std_logic_vector(31 downto 0);
-	signal madd : std_logic_vector(AW-1 downto 0);
+	signal madd : std_logic_vector(AW_C-1 downto 0);
 	signal mwe  : std_logic;
 	signal mq   : std_logic_vector(31 downto 0);
+
+	function reg5(n : natural) return std_logic_vector is
+	begin
+		return std_logic_vector(to_unsigned(n, 5));
+	end function;
+
+	function imm12s(n : integer) return std_logic_vector is
+	begin
+		return std_logic_vector(to_signed(n, 12));
+	end function;
 
 	procedure step(
 		signal clk_s : in std_logic;
@@ -81,7 +96,6 @@ architecture sim of tb_mySecondRISCVDatapath is
 		mtrv : std_logic
 	) is
 	begin
-		-- FIX: don't do "wait until clk='0'" because clk starts at 0 and it fires instantly
 		wait until falling_edge(clk_s);
 
 		rs1_s <= rs1v;
@@ -99,29 +113,49 @@ architecture sim of tb_mySecondRISCVDatapath is
 		wait for 1 ns;
 	end procedure;
 
+	procedure expect_store(
+		signal madd_s : in std_logic_vector(AW_C-1 downto 0);
+		signal mwe_s  : in std_logic;
+		expected_word_addr : natural
+	) is
+	begin
+		assert mwe_s = '1'
+			report "Expected a store here, but MemWrite was not high."
+			severity error;
+
+		assert unsigned(madd_s) = to_unsigned(expected_word_addr, AW_C)
+			report "Store hit wrong word address."
+			severity error;
+	end procedure;
+
 begin
+
 	uut: mySecondRISCVDatapath
+		generic map(
+			AW => AW_C,
+			DW => 32
+		)
 		port map(
 			i_CLK => clk,
 			i_RST => rst,
 
 			i_RegWrite => RegWrite,
-			i_ALUSrc => ALUSrc,
-			i_nAddSub => nAddSub,
+			i_ALUSrc   => ALUSrc,
+			i_nAddSub  => nAddSub,
 			i_MemWrite => MemWrite,
 			i_MemToReg => MemToReg,
 
 			i_rs1 => rs1,
 			i_rs2 => rs2,
-			i_rd => rd,
+			i_rd  => rd,
 			i_imm12 => imm12,
 
 			o_rs1_data => rs1d,
 			o_rs2_data => rs2d,
-			o_alu_out => aluo,
+			o_alu_out  => aluo,
 			o_mem_addr => madd,
-			o_mem_we => mwe,
-			o_mem_q => mq
+			o_mem_we   => mwe,
+			o_mem_q    => mq
 		);
 
 	clk_proc: process
@@ -135,32 +169,178 @@ begin
 	stim: process
 	begin
 		rst <= '1';
+		RegWrite <= '0';
+		ALUSrc   <= '0';
+		nAddSub  <= '0';
+		MemWrite <= '0';
+		MemToReg <= '0';
+		rs1 <= (others => '0');
+		rs2 <= (others => '0');
+		rd  <= (others => '0');
+		imm12 <= (others => '0');
+
 		wait for 12 ns;
 		rst <= '0';
 		wait for 8 ns;
 
-		-- same "program" you already had (not touching it)
-		-- if stuff still looks off, it's prob memory not loaded or control bits flipped
+		-- addi x25, zero, 0
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(0), reg5(0), reg5(25), imm12s(0),
+			'1', '1', '0', '0', '0');
+
+		-- addi x26, zero, 256
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(0), reg5(0), reg5(26), imm12s(256),
+			'1', '1', '0', '0', '0');
+
+		-- lw x1, 0(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(1), imm12s(0),
+			'1', '1', '0', '0', '1');
+
+		-- lw x2, 4(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(2), imm12s(4),
+			'1', '1', '0', '0', '1');
+
+		-- add x1, x1, x2
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(1), reg5(2), reg5(1), imm12s(0),
+			'1', '0', '0', '0', '0');
+
+		-- sw x1, 0(x26) -> B[0] -> word 64
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(26), reg5(1), reg5(0), imm12s(0),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 64);
+
+		-- lw x2, 8(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(2), imm12s(8),
+			'1', '1', '0', '0', '1');
+
+		-- add x1, x1, x2
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(1), reg5(2), reg5(1), imm12s(0),
+			'1', '0', '0', '0', '0');
+
+		-- sw x1, 4(x26) -> B[1] -> word 65
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(26), reg5(1), reg5(0), imm12s(4),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 65);
+
+		-- lw x2, 12(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(2), imm12s(12),
+			'1', '1', '0', '0', '1');
+
+		-- add x1, x1, x2
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(1), reg5(2), reg5(1), imm12s(0),
+			'1', '0', '0', '0', '0');
+
+		-- sw x1, 8(x26) -> B[2] -> word 66
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(26), reg5(1), reg5(0), imm12s(8),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 66);
+
+		-- lw x2, 16(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(2), imm12s(16),
+			'1', '1', '0', '0', '1');
+
+		-- add x1, x1, x2
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(1), reg5(2), reg5(1), imm12s(0),
+			'1', '0', '0', '0', '0');
+
+		-- sw x1, 12(x26) -> B[3] -> word 67
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(26), reg5(1), reg5(0), imm12s(12),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 67);
+
+		-- lw x2, 20(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(2), imm12s(20),
+			'1', '1', '0', '0', '1');
+
+		-- add x1, x1, x2
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(1), reg5(2), reg5(1), imm12s(0),
+			'1', '0', '0', '0', '0');
+
+		-- sw x1, 16(x26) -> B[4] -> word 68
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(26), reg5(1), reg5(0), imm12s(16),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 68);
+
+		-- lw x2, 24(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(2), imm12s(24),
+			'1', '1', '0', '0', '1');
+
+		-- add x1, x1, x2
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(1), reg5(2), reg5(1), imm12s(0),
+			'1', '0', '0', '0', '0');
+
+		-- addi x27, zero, 512
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(0), reg5(0), reg5(27), imm12s(512),
+			'1', '1', '0', '0', '0');
+
+		-- sw x1, -4(x27) -> B[63] -> word 127
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(27), reg5(1), reg5(0), imm12s(-4),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 127);
+
+		-- sw x1, -4(x27) again
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(27), reg5(1), reg5(0), imm12s(-4),
+			'0', '1', '0', '1', '0');
+		expect_store(madd, mwe, 127);
+		
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(2), reg5(0), reg5(2), imm12s(24),
+			'1', '1', '0', '0', '1');
+		-- lw x1, 20(x25)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(25), reg5(0), reg5(1), imm12s(20),
+			'1', '1', '0', '0', '1');
+
+		-- sw x1, 20(x26)
+		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
+			reg5(26), reg5(1), reg5(0), imm12s(20),
+			'0', '1', '0', '1', '0');
 
 		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
-			"00000","00000","11001", x"000",  '1','1','0','0','0');
+			reg5(25), reg5(0), reg5(5), imm12s(8),
+			'1', '1', '0', '0', '1');
 
-		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
-			"00000","00000","11010", x"100",  '1','1','0','0','0');
+expect_store(madd, mwe, 69);
+		wait until falling_edge(clk);
+		RegWrite <= '0';
+		ALUSrc   <= '0';
+		nAddSub  <= '0';
+		MemWrite <= '0';
+		MemToReg <= '0';
+		rs1 <= (others => '0');
+		rs2 <= (others => '0');
+		rd  <= (others => '0');
+		imm12 <= (others => '0');
 
-		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
-			"11001","00000","00001", x"000",  '1','1','0','0','1');
+		wait until rising_edge(clk);
+		wait for 1 ns;
 
-		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
-			"11001","00000","00010", x"004",  '1','1','0','0','1');
+		assert false
+			report "Finished full mySecondRISCVDatapath test sequence."
+			severity note;
 
-		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
-			"00001","00010","00001", x"000",  '1','0','0','0','0');
-
-		step(clk, rs1, rs2, rd, imm12, RegWrite, ALUSrc, nAddSub, MemWrite, MemToReg,
-			"11010","00001","00000", x"000",  '0','1','0','1','0');
-
-		-- ... keep the rest of your steps exactly the same ...
 		wait;
 	end process;
 

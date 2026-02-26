@@ -1,11 +1,13 @@
 [N
-4
+5
 2
-5 reg_n
-4
-1 N
+21 mysecondriscvdatapath
 1
 59 /home/mmota29/Desktop/lab2/lab23810spring/Lab2(5)/Lab2/work
+4
+2 AW
+5
+2 DW
 3
 10 structural
 ]
@@ -15,6 +17,20 @@
 3
 1
 4
+1
+0
+10
+0
+0 0
+0
+0
+]
+[G
+1
+2
+3
+1
+5
 1
 0
 32
